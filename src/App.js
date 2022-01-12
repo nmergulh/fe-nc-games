@@ -1,16 +1,15 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import NavBar from "./components/NavBar";
-import ReviewList from "./components/ReviewList";
-import ReviewCard from "./components/ReviewCard";
-import Homepage from "./components/Homepage";
+import NavBar from "./components/navbar/NavBar";
+import ReviewList from "./components/reviewlist/ReviewList";
+import Categories from "./components/Categories";
+import Homepage from "./components/homepage/Homepage";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="app">
         <NavBar />
-        <h1 className="header">NC Games Reviews</h1>
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/categories" />
