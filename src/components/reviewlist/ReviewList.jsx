@@ -2,51 +2,34 @@ import { useEffect, useState } from "react";
 import { getReviews } from "../../utils/api";
 import "./reviewlist.scss";
 import { BackdropUnstyled, CircularProgress, Button } from "@mui/material";
+import { useParams } from "react-router-dom";
+import { useLoading } from "../../hooks/useLoading";
+import Reviewcard from "../reviewcard/Reviewcard";
 
 const ReviewList = () => {
   const [reviews, setReviewsList] = useState([]);
+  const { loading, setIsLoading } = useLoading();
 
-  const [loading, setLoading] = useState(true);
+  const { category } = useParams();
 
   useEffect(() => {
-    getReviews().then((itemsFromApi) => {
+    getReviews(category).then((itemsFromApi) => {
+      setIsLoading(true);
       setReviewsList(itemsFromApi);
-      setLoading(false);
+      setIsLoading(false);
+      console.log(reviews);
     });
-  }, []);
-
-  console.log(reviews[0]);
+  }, [category, setIsLoading]);
 
   return loading ? (
-    <BackdropUnstyled>
-      <CircularProgress color="inherit" />
+    <BackdropUnstyled className="backdrop">
+      <CircularProgress color="inherit" className="circleprogress" />
+      <p>Loading...</p>
     </BackdropUnstyled>
   ) : (
     <ul className="reviewlist">
       {reviews.map((review) => {
-        return (
-          <li key={review.review_id}>
-            <div className="timestamp">
-              <p>{review.created_at}</p>
-            </div>
-            <div className="review-img">
-              <img src={review.review_img_url} alt={review.title}></img>
-            </div>
-            <div className="review-data">
-              <h2>{review.title}</h2>
-              <p>{review.review_body}</p>
-            </div>
-            <div className="review-votes">
-              <h4> Vote Count: {review.votes}</h4>
-              <Button className="upvote" variant="contained">
-                Upvote
-              </Button>
-              <Button className="downvote" variant="contained">
-                Downvote
-              </Button>
-            </div>
-          </li>
-        );
+        return <Reviewcard review={review} key={review.review_id} />;
       })}
     </ul>
   );

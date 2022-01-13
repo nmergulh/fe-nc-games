@@ -1,7 +1,5 @@
 import React from "react";
-import { getCategories } from "../../utils/api";
 import { Link } from "react-router-dom";
-import Categories from "../Categories";
 import "./navbar.scss";
 import PersonIcon from "@mui/icons-material/Person";
 import CategoryIcon from "@mui/icons-material/Category";

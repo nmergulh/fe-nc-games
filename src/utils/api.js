@@ -1,17 +1,39 @@
 import axios from "axios";
 
 const gamesAPI = axios.create({
-  baseURL: "https://nc-games-application.herokuapp.com/api",
+  baseURL: "https://nc-games-application.herokuapp.com/api/",
 });
 
 export const getCategories = () => {
-  return gamesAPI.get("/categories").then((res) => {
-    return res.data.categories;
-  });
+  return gamesAPI
+    .get("/categories")
+    .then((res) => {
+      return res.data.categories;
+    })
+    .catch((err) => {
+      return err;
+    });
 };
 
-export const getReviews = () => {
-  return gamesAPI.get("/reviews").then((res) => {
-    return res.data.reviews;
-  });
+export const getReviews = (category) => {
+  return gamesAPI
+    .get("/reviews", {
+      params: {
+        category,
+      },
+    })
+    .then((res) => {
+      return res.data.reviews;
+    });
+};
+
+export const getReviewById = (review_id) => {
+  return gamesAPI
+    .get(`./reviews/${review_id}`)
+    .then((res) => {
+      return res.data.review;
+    })
+    .catch((err) => {
+      return err;
+    });
 };
