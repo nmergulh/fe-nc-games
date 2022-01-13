@@ -16,6 +16,7 @@ export const getCategories = () => {
 };
 
 export const getReviews = (category) => {
+  console.log(category);
   return gamesAPI
     .get("/reviews", {
       params: {
@@ -32,6 +33,17 @@ export const getReviewById = (review_id) => {
     .get(`./reviews/${review_id}`)
     .then((res) => {
       return res.data.review;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
+
+export const getCommentsByReviewId = (review_id) => {
+  return gamesAPI
+    .get(`./reviews/${review_id}/comments`)
+    .then((res) => {
+      return res.data.comments;
     })
     .catch((err) => {
       return err;

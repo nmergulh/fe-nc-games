@@ -10,16 +10,15 @@ const ReviewList = () => {
   const [reviews, setReviewsList] = useState([]);
   const { loading, setIsLoading } = useLoading();
 
-  const { category } = useParams();
+  const { category_name } = useParams();
 
   useEffect(() => {
-    getReviews(category).then((itemsFromApi) => {
+    getReviews(category_name).then((itemsFromApi) => {
       setIsLoading(true);
       setReviewsList(itemsFromApi);
       setIsLoading(false);
-      console.log(reviews);
     });
-  }, [category, setIsLoading]);
+  }, [category_name, setIsLoading]);
 
   return loading ? (
     <BackdropUnstyled className="backdrop">

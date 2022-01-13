@@ -8,7 +8,6 @@ const Homepage = () => {
   console.log(location.pathname);
   return (
     <div className="homepage">
-      <h1>Homepage</h1>
       <ReviewList />
     </div>
   );
