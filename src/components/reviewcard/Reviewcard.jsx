@@ -1,7 +1,7 @@
 import React from "react";
-import { Button } from "@mui/material";
 import "./reviewcard.scss";
 import { Link } from "react-router-dom";
+import Votes from "../votes/Votes";
 
 const Reviewcard = ({ review }) => {
   const dateTranslater = () => {
@@ -21,8 +21,8 @@ const Reviewcard = ({ review }) => {
   };
 
   return (
-    <Link to={`/reviews/${review.review_id}`} className="review-card-link">
-      <li key={review.review_id} className="review-card">
+    <li key={review.review_id} className="review-card">
+      <Link to={`/reviews/${review.review_id}`} className="review-card-link">
         <div className="timestamp">
           <p>{dateTranslater()}</p>
         </div>
@@ -37,17 +37,11 @@ const Reviewcard = ({ review }) => {
           </div>
           <p>{review.review_body}</p>
         </div>
-        <div className="review-votes">
-          <h4> Vote Count: {review.votes}</h4>
-          <Button className="upvote" variant="outlined">
-            Upvote
-          </Button>
-          <Button className="downvote" variant="outlined">
-            Downvote
-          </Button>
-        </div>
-      </li>
-    </Link>
+      </Link>
+      <div className="review-votes">
+        <Votes votes={review.votes} />
+      </div>
+    </li>
   );
 };
 

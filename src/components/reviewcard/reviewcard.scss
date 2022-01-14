@@ -1,13 +1,12 @@
-.review-card-link {
-  text-decoration: none;
-  color: black;
-  .review-card {
-    border: solid rgb(18, 120, 216) 1px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    list-style: none;
-    border-radius: 7px;
-
+.review-card {
+  border: solid rgb(18, 120, 216) 1px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  list-style: none;
+  border-radius: 7px;
+  .review-card-link {
+    color: black;
+    text-decoration: none;
     .timestamp {
       background-color: cornsilk;
       top: 0px;
@@ -20,8 +19,8 @@
     .review-img {
       text-align: center;
       img {
-        width: 100px;
-        height: 100px;
+        width: 200px;
+        height: 200px;
         margin: 10px;
       }
     }
@@ -46,21 +45,10 @@
         }
       }
     }
-
-    .review-votes {
-      h4 {
-        margin-left: 10px;
-      }
-      .upvote {
-        margin-bottom: 10px;
-        margin-left: 10px;
-        margin-right: 5px;
-      }
-      .downvote {
-        margin-bottom: 10px;
-        margin-right: 5px;
-      }
-    }
+  }
+  .review-votes {
+    display: flex;
+    align-content: center;
   }
 }
 

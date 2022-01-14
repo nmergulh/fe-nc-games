@@ -2,10 +2,9 @@ import React from "react";
 import { Button } from "@mui/material";
 import "./singlereviewcard.scss";
 import Comments from "../comments/Comments";
-import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import ThumbDownIcon from "@mui/icons-material/ThumbDown";
-import { IconButton, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import PostAddIcon from "@mui/icons-material/PostAdd";
+import Votes from "../votes/Votes";
 
 const Singlereviewcard = ({ reviewdata }) => {
   const dateTranslater = () => {
@@ -25,7 +24,7 @@ const Singlereviewcard = ({ reviewdata }) => {
   };
 
   return (
-    <ul className="single-reviewcard">
+    <div className="single-reviewcard">
       <li className="single-reviewcardwrap">
         <div className="timestamp">
           <p>{dateTranslater()}</p>
@@ -41,29 +40,25 @@ const Singlereviewcard = ({ reviewdata }) => {
         </div>
         <div className="review-likes-category">
           <div className="review-votes">
-            <IconButton aria-label="thumbs up" className="upvote">
-              <ThumbUpIcon style={{ fill: "green", opacity: "0.7" }} />
-            </IconButton>
-            <h4> Vote Count: {reviewdata.votes}</h4>
-            <IconButton aria-label="thumbs up" className="upvote">
-              <ThumbDownIcon style={{ fill: "red", opacity: "0.7" }} />
-            </IconButton>
+            <Votes votes={reviewdata.votes} />
           </div>
         </div>
         <div className="comments-alert">
           <Comments review_id={reviewdata.review_id} />
         </div>
-        <TextField
-          id="outlined-basic"
-          label="Write a Comment..."
-          variant="outlined"
-          multiline
-          rows={4}
-          inputProps={{
-            style: { fontSize: 15 },
-          }}
-          className="comment-textfield"
-        />
+        <div className="post-comment">
+          <TextField
+            id="outlined-basic"
+            label="Write a Comment..."
+            variant="outlined"
+            multiline
+            rows={4}
+            inputProps={{
+              style: { fontSize: 15 },
+            }}
+            className="comment-textfield"
+          />
+        </div>
         <div className="post-button">
           <Button
             key="post-comment"
@@ -74,7 +69,7 @@ const Singlereviewcard = ({ reviewdata }) => {
           </Button>
         </div>
       </li>
-    </ul>
+    </div>
   );
 };
 

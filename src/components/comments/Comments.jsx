@@ -29,11 +29,11 @@ const Comments = ({ review_id }) => {
       <p>Loading...</p>
     </BackdropUnstyled>
   ) : userComments.length > 1 ? (
-    <ul className="reviewlist">
+    <div className="reviewlist">
       {userComments.map((comment) => {
         return <Commentcard comment={comment} key={comment.comment_id} />;
       })}
-    </ul>
+    </div>
   ) : (
     <Alert className="no-comments-alert" severity="info">
       <AlertTitle>No Comments</AlertTitle>

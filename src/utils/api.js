@@ -49,3 +49,14 @@ export const getCommentsByReviewId = (review_id) => {
       return err;
     });
 };
+
+export const patchVotesByReviewId = (review_id = 14, votes) => {
+  return gamesAPI
+    .patch(`./reviews/${review_id}`, { inc_votes: votes })
+    .then((res) => {
+      return res.data.review;
+    })
+    .catch((err) => {
+      return err;
+    });
+};

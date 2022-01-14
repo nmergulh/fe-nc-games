@@ -1,0 +1,33 @@
+.single-commentcardwrap {
+  border: 1px solid rgb(199, 220, 233);
+  margin-right: 0;
+  margin-left: 20px;
+  margin-bottom: 10px;
+
+  .comment-bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: cornsilk;
+    justify-content: space-between;
+
+    .name-picture {
+      display: flex;
+      align-items: center;
+      h4 {
+        margin-left: 10px;
+      }
+      .avatar {
+        margin-left: 10px;
+      }
+    }
+    p {
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+  }
+  .comment-data {
+    margin-left: 10px;
+  }
+}

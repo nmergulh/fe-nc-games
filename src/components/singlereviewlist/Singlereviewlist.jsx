@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "./reviewpage.scss";
+import "./singlereviewlist.scss";
 import { getReviewById } from "../../utils/api";
 import { useLoading } from "../../hooks/useLoading";
 import { BackdropUnstyled, CircularProgress } from "@mui/material";
 import Singlereviewcard from "../singlereviewcard/Singlereviewcard";
 
-const Reviewpage = () => {
+const Singlereviewlist = () => {
   const [reviewdata, setReviewData] = useState({});
   const { review_id } = useParams();
   const { loading, setIsLoading } = useLoading();
@@ -25,11 +25,11 @@ const Reviewpage = () => {
       <p>Loading...</p>
     </BackdropUnstyled>
   ) : (
-    <section className="review-page">
+    <ul className="single-reviewlist">
       <h1>{reviewdata.title}</h1>
       <Singlereviewcard reviewdata={reviewdata} />
-    </section>
+    </ul>
   );
 };
 
-export default Reviewpage;
+export default Singlereviewlist;
