@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import NavBar from "./components/navbar/NavBar";
-import ReviewList from "./components/reviewlist/ReviewList";
 import Categories from "./components/categories/Categories";
 import Homepage from "./components/homepage/Homepage";
 import Reviewpage from "./components/reviewpage/Reviewpage";

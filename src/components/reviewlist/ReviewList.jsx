@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getReviews } from "../../utils/api";
 import "./reviewlist.scss";
-import { BackdropUnstyled, CircularProgress, Button } from "@mui/material";
+import { BackdropUnstyled, CircularProgress } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useLoading } from "../../hooks/useLoading";
 import Reviewcard from "../reviewcard/Reviewcard";

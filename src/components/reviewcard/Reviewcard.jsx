@@ -4,11 +4,27 @@ import "./reviewcard.scss";
 import { Link } from "react-router-dom";
 
 const Reviewcard = ({ review }) => {
+  const dateTranslater = () => {
+    let date = review.created_at;
+    let dateformat = date.slice(0, 10);
+    let timeformat = date.slice(11, 16);
+
+    if (
+      date.slice(11, 11) === "0" ||
+      date.slice(11, 13) === "10" ||
+      date.slice(11, 13) === "11"
+    ) {
+      return `${dateformat} ${timeformat}am`;
+    } else {
+      return `${dateformat} ${timeformat}pm`;
+    }
+  };
+
   return (
     <Link to={`/reviews/${review.review_id}`} className="review-card-link">
       <li key={review.review_id} className="review-card">
         <div className="timestamp">
-          <p>{review.created_at}</p>
+          <p>{dateTranslater()}</p>
         </div>
         <div className="review-img">
           <img src={review.review_img_url} alt={review.title}></img>

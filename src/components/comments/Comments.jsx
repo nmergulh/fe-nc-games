@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./comments.scss";
 import { getCommentsByReviewId } from "../../utils/api";
-import { BackdropUnstyled, CircularProgress } from "@mui/material";
+import {
+  BackdropUnstyled,
+  CircularProgress,
+  Alert,
+  AlertTitle,
+} from "@mui/material";
 import { useLoading } from "../../hooks/useLoading";
 import Commentcard from "../commentcard/Commentcard";
 
@@ -30,7 +35,10 @@ const Comments = ({ review_id }) => {
       })}
     </ul>
   ) : (
-    <h2>No comments</h2>
+    <Alert className="no-comments-alert" severity="info">
+      <AlertTitle>No Comments</AlertTitle>
+      Post a Comment Below.
+    </Alert>
   );
 };
 
