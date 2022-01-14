@@ -2,6 +2,7 @@ import React from "react";
 import "./reviewcard.scss";
 import { Link } from "react-router-dom";
 import Votes from "../votes/Votes";
+import Avatar from "@mui/material/Avatar";
 
 const Reviewcard = ({ review }) => {
   const dateTranslater = () => {
@@ -23,7 +24,11 @@ const Reviewcard = ({ review }) => {
   return (
     <li key={review.review_id} className="review-card">
       <Link to={`/reviews/${review.review_id}`} className="review-card-link">
-        <div className="timestamp">
+        <div className="review-bar">
+          <div className="name-picture">
+            <Avatar className="avatar">{review.owner}</Avatar>
+            <h4>{review.owner}</h4>
+          </div>
           <p>{dateTranslater()}</p>
         </div>
         <div className="review-img">

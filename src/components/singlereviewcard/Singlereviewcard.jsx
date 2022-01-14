@@ -5,6 +5,7 @@ import Comments from "../comments/Comments";
 import { TextField } from "@mui/material";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import Votes from "../votes/Votes";
+import Avatar from "@mui/material/Avatar";
 
 const Singlereviewcard = ({ reviewdata }) => {
   const dateTranslater = () => {
@@ -26,7 +27,11 @@ const Singlereviewcard = ({ reviewdata }) => {
   return (
     <div className="single-reviewcard">
       <li className="single-reviewcardwrap">
-        <div className="timestamp">
+        <div className="review-bar">
+          <div className="name-picture">
+            <Avatar className="avatar">{reviewdata.owner}</Avatar>
+            <h4>{reviewdata.owner}</h4>
+          </div>
           <p>{dateTranslater()}</p>
         </div>
         <div className="review-img">

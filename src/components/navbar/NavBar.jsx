@@ -14,7 +14,7 @@ const NavBar = () => {
       </div>
       <div className="navbar-center">
         <Link to="/categories" className="categories-link">
-          <CategoryIcon className="categories-icon" alt="Hello" />
+          <CategoryIcon className="categories-icon" />
           <span className="categories-word">Categories</span>
         </Link>
         <Link to="/users" className="users-link">

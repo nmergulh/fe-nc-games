@@ -7,12 +7,31 @@
   .review-card-link {
     color: black;
     text-decoration: none;
-    .timestamp {
+
+    .review-bar {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
       background-color: cornsilk;
-      top: 0px;
+      justify-content: space-between;
+
+      .name-picture {
+        display: flex;
+        align-items: center;
+        h4 {
+          margin-left: 10px;
+        }
+        .avatar {
+          margin-left: 10px;
+          @media (max-width: 414px) {
+            display: none;
+          }
+        }
+      }
       p {
-        text-align: right;
         margin-right: 10px;
+        margin-left: 10px;
       }
     }
 
