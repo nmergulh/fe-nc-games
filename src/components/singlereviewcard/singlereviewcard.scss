@@ -13,6 +13,7 @@
       align-items: center;
       background-color: cornsilk;
       justify-content: space-between;
+      border-radius: 7px;
 
       .name-picture {
         display: flex;
@@ -64,10 +65,10 @@
     }
 
     .post-comment {
+      margin-left: 10px;
+      margin-right: 10px;
       .comment-textfield {
-        margin-left: 10px;
         margin-bottom: 10px;
-        min-width: 275px;
       }
     }
 

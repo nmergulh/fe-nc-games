@@ -1,3 +1,5 @@
+@import "../../global.scss";
+
 .categories {
   height: calc(80vh - 60px);
   position: relative;
@@ -7,13 +9,38 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   h1 {
     text-align: center;
+    margin-left: 40px;
   }
   ul {
     li {
       list-style: none;
-      border: solid black 1px;
+      border: solid 1px $maincolor;
       margin-top: 10px;
       margin-bottom: 10px;
+      padding: 20px;
+      text-align: center;
+      text-decoration: none;
+      background-color: rgb(184, 229, 254);
+      border-radius: 7px;
+      a {
+        font-size: large;
+        text-decoration: none;
+        color: black;
+      }
     }
+  }
+}
+
+.backdrop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+
+  p {
+    margin-left: 5px;
   }
 }

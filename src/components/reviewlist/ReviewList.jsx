@@ -6,19 +6,19 @@ import { useParams } from "react-router-dom";
 import { useLoading } from "../../hooks/useLoading";
 import Reviewcard from "../reviewcard/Reviewcard";
 
-const ReviewList = () => {
+const ReviewList = ({ sort, order }) => {
   const [reviews, setReviewsList] = useState([]);
   const { loading, setIsLoading } = useLoading();
 
   const { category_name } = useParams();
 
   useEffect(() => {
-    getReviews(category_name).then((itemsFromApi) => {
+    getReviews(category_name, sort, order).then((itemsFromApi) => {
       setIsLoading(true);
       setReviewsList(itemsFromApi);
       setIsLoading(false);
     });
-  }, [category_name, setIsLoading]);
+  }, [category_name, setIsLoading, sort, order]);
 
   return loading ? (
     <BackdropUnstyled className="backdrop">
@@ -26,11 +26,11 @@ const ReviewList = () => {
       <p>Loading...</p>
     </BackdropUnstyled>
   ) : (
-    <ul className="reviewlist">
+    <div className="reviewlist">
       {reviews.map((review) => {
         return <Reviewcard review={review} key={review.review_id} />;
       })}
-    </ul>
+    </div>
   );
 };
 

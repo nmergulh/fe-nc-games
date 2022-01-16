@@ -30,7 +30,7 @@ const Votes = ({ review_id, votes }) => {
           style={
             upclicker
               ? { fill: "green", opacity: "1" }
-              : { fill: "green", opacity: "0.7" }
+              : { fill: "green", opacity: "0.4" }
           }
         />
       </IconButton>
@@ -54,7 +54,7 @@ const Votes = ({ review_id, votes }) => {
           style={
             downclicker
               ? { fill: "red", opacity: "1" }
-              : { fill: "red", opacity: "0.7" }
+              : { fill: "red", opacity: "0.4" }
           }
         />
       </IconButton>

@@ -6,24 +6,9 @@ import { TextField } from "@mui/material";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import Votes from "../votes/Votes";
 import Avatar from "@mui/material/Avatar";
+import { dateTranslater } from "../../utils/datetranslator";
 
 const Singlereviewcard = ({ reviewdata }) => {
-  const dateTranslater = () => {
-    let date = reviewdata.created_at;
-    let dateformat = date.slice(0, 10);
-    let timeformat = date.slice(11, 16);
-
-    if (
-      date.slice(11, 11) === "0" ||
-      date.slice(11, 13) === "10" ||
-      date.slice(11, 13) === "11"
-    ) {
-      return `${dateformat} ${timeformat}am`;
-    } else {
-      return `${dateformat} ${timeformat}pm`;
-    }
-  };
-
   return (
     <div className="single-reviewcard">
       <li className="single-reviewcardwrap">
@@ -32,7 +17,7 @@ const Singlereviewcard = ({ reviewdata }) => {
             <Avatar className="avatar">{reviewdata.owner}</Avatar>
             <h4>{reviewdata.owner}</h4>
           </div>
-          <p>{dateTranslater()}</p>
+          <p>{dateTranslater(reviewdata)}</p>
         </div>
         <div className="review-img">
           <img src={reviewdata.review_img_url} alt={reviewdata.title}></img>
@@ -58,6 +43,7 @@ const Singlereviewcard = ({ reviewdata }) => {
             variant="outlined"
             multiline
             rows={4}
+            fullWidth
             inputProps={{
               style: { fontSize: 15 },
             }}

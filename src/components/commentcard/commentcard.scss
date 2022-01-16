@@ -1,7 +1,6 @@
 .single-commentcardwrap {
   border: 1px solid rgb(199, 220, 233);
   margin-right: 0;
-  margin-left: 20px;
   margin-bottom: 10px;
 
   .comment-bar {
@@ -9,7 +8,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    background-color: cornsilk;
+    background-color: rgb(168, 225, 242);
     justify-content: space-between;
 
     .name-picture {

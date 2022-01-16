@@ -15,12 +15,13 @@ export const getCategories = () => {
     });
 };
 
-export const getReviews = (category) => {
-  console.log(category);
+export const getReviews = (category, sort_by, order) => {
   return gamesAPI
     .get("/reviews", {
       params: {
         category,
+        sort_by,
+        order,
       },
     })
     .then((res) => {

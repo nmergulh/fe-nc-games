@@ -1,11 +1,11 @@
 import React from "react";
-import ReviewList from "../reviewlist/Reviewlist";
+import Reviewquerybar from "../reviewquerybar/Reviewquerybar";
 import "./homepage.scss";
 
 const Homepage = () => {
   return (
     <div className="homepage">
-      <ReviewList />
+      <Reviewquerybar />
     </div>
   );
 };
