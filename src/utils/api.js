@@ -5,14 +5,9 @@ const gamesAPI = axios.create({
 });
 
 export const getCategories = () => {
-  return gamesAPI
-    .get("/categories")
-    .then((res) => {
-      return res.data.categories;
-    })
-    .catch((err) => {
-      return err;
-    });
+  return gamesAPI.get("/categorie").then((res) => {
+    return res.data.categories;
+  });
 };
 
 export const getReviews = (category, sort_by, order) => {
@@ -30,14 +25,9 @@ export const getReviews = (category, sort_by, order) => {
 };
 
 export const getReviewById = (review_id) => {
-  return gamesAPI
-    .get(`./reviews/${review_id}`)
-    .then((res) => {
-      return res.data.review;
-    })
-    .catch((err) => {
-      return err;
-    });
+  return gamesAPI.get(`./reviews/${review_id}`).then((res) => {
+    return res.data.review;
+  });
 };
 
 export const getCommentsByReviewId = (review_id) => {

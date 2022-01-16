@@ -4,6 +4,7 @@ import Navbar from "./components/navbar/Navbar";
 import Categories from "./components/categories/Categories";
 import Homepage from "./components/homepage/Homepage";
 import Singlereviewpage from "./components/reviewpage/Singlereviewpage";
+import { Errorpage } from "./components/errorpage/Errorpage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <div className="app">
         <Navbar />
         <Routes>
+          <Route path="*" element={<Errorpage />} />
           <Route path="/" element={<Homepage />} />
           <Route path="/reviews" element={<Homepage />} />
           <Route path="/categories" element={<Categories />} />
