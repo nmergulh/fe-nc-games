@@ -51,3 +51,9 @@ export const patchVotesByReviewId = (review_id = 14, votes) => {
       return err;
     });
 };
+
+export const getUsername = (username) => {
+  return gamesAPI.get(`/users/${username}`).then(({ data }) => {
+    return data.user;
+  });
+};

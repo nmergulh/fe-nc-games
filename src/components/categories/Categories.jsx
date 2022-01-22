@@ -36,7 +36,7 @@ const Categories = () => {
       <p></p>
     ) : (
       <div className="categories">
-        <h1>Categories</h1>
+        <h2>Categories</h2>
         <ul>
           {reviewCategories.map((category) => {
             return (

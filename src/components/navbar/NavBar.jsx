@@ -17,7 +17,7 @@ const NavBar = () => {
           <CategoryIcon className="categories-icon" />
           <span className="categories-word">Categories</span>
         </Link>
-        <Link to="/users" className="users-link">
+        <Link to="/login" className="users-link">
           <PersonIcon className="person-icon" />
           <span className="user-word">User</span>
         </Link>
