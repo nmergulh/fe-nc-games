@@ -25,7 +25,7 @@ const Categories = () => {
   }, [setIsLoading, setError]);
 
   if (isError) {
-    return <Errorpage message={isError} />;
+    return <Errorpage />;
   } else
     return loading ? (
       <BackdropUnstyled className="backdrop">

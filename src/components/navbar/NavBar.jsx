@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./navbar.scss";
-import PersonIcon from "@mui/icons-material/Person";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CategoryIcon from "@mui/icons-material/Category";
+import { UserContext } from "../../contexts/userContext";
 
 const NavBar = () => {
+  const { username, setUsername, currentUser } = useContext(UserContext);
+
   return (
     <div className="navbar">
       <div className="navbar-left">
-        <Link to="/">
+        <Link to="/reviews">
           <h4>NC House of Games 🎲</h4>
         </Link>
       </div>
@@ -17,9 +20,9 @@ const NavBar = () => {
           <CategoryIcon className="categories-icon" />
           <span className="categories-word">Categories</span>
         </Link>
-        <Link to="/login" className="users-link">
-          <PersonIcon className="person-icon" />
-          <span className="user-word">User</span>
+        <Link to="/" className="users-link">
+          <AccountCircleIcon className="person-icon" />
+          <span className="user-word">Login</span>
         </Link>
       </div>
     </div>

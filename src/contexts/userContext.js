@@ -7,6 +7,8 @@ export const UserProvider = ({ children }) => {
   const [avatar, setAvatar] = useState("");
   const [fullName, setFullName] = useState("");
   const [currentUser, setCurrentUser] = useState({});
+  const [allUsers, setAllUsers] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <UserContext.Provider
@@ -19,6 +21,8 @@ export const UserProvider = ({ children }) => {
         setUsername,
         currentUser,
         setCurrentUser,
+        allUsers,
+        setAllUsers,
       }}
     >
       {children}

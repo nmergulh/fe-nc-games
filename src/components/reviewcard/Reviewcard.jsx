@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import "./reviewcard.scss";
 import { Link } from "react-router-dom";
 import Votes from "../votes/Votes";
 import Avatar from "@mui/material/Avatar";
 import { dateTranslater } from "../../utils/datetranslator";
 import { truncateText } from "../../utils/truncateText";
+import { UserContext } from "../../contexts/userContext";
 
 const Reviewcard = ({ review }) => {
+  const { allUsers, setAllUsers } = useContext(UserContext);
+
+  let avatarUrl = "";
+  for (let i = 0; i < allUsers.length; i++) {
+    if (allUsers[i].username === review.owner) {
+      avatarUrl = allUsers[i].avatar_url;
+    }
+  }
+
   return (
     <li key={review.review_id} className="review-card">
       <Link to={`/reviews/${review.review_id}`} className="review-card-link">
         <div className="review-bar">
           <div className="name-picture">
-            <Avatar className="avatar">{review.owner}</Avatar>
+            <Avatar className="avatar" alt={review.owner} src={avatarUrl} />
             <h4>{review.owner}</h4>
           </div>
           <p>{dateTranslater(review)}</p>

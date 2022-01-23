@@ -1,17 +1,19 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/userContext";
-import { getUsername } from "../../utils/api";
+import { getUserDetails } from "../../utils/api";
 import { useError } from "../../hooks/useError";
 import { FormControl, InputLabel, IconButton, TextField } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { InputAdornment, OutlinedInput } from "@mui/material";
 
 import "./loginpage.scss";
+import Dashboard from "../dashboard/Dashboard";
 
 const Loginpage = () => {
-  const { isError, setIsError } = useError();
-  const { username, setUsername } = useContext(UserContext);
+  const { isError, setIsError } = useError(false);
+  const { username, setUsername, setCurrentUser, setLoggedIn, loggedIn } =
+    useContext(UserContext);
   const [values, setValues] = useState({
     password: "",
     showPassword: "",
@@ -19,8 +21,8 @@ const Loginpage = () => {
   const navigate = useNavigate();
 
   const handleUsernameInput = (event) => {
-    const username = event.target.value;
-    setUsername(username);
+    const usernameInput = event.target.value;
+    setUsername(usernameInput);
   };
 
   const handleClickShowPassword = () => {
@@ -41,35 +43,27 @@ const Loginpage = () => {
   const handleSignIn = (event) => {
     setIsError(false);
     event.preventDefault();
-    getUsername(username)
-      .then((itemsFromApi) => {
+    getUserDetails(username)
+      .then((user) => {
         if (values.password === "password") {
+          setCurrentUser(user);
           navigate(`/dashboard/${username}`);
-        } else {
-          setValues({
-            ...values,
-            password: "",
-          });
-          setUsername("");
-          setIsError(true);
+          setLoggedIn(true);
         }
       })
       .catch((err) => {
         setUsername("");
-        setValues({
-          ...values,
-          password: "",
-        });
         setIsError(true);
       });
   };
 
-  return (
+  return loggedIn ? (
     <div className="login">
       <h2>Login</h2>
       <form onSubmit={handleSignIn} className="form">
         <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
           <TextField
+            fullWidth
             id="outlined-basic"
             label="Username"
             variant="outlined"
@@ -77,46 +71,55 @@ const Loginpage = () => {
             onChange={handleUsernameInput}
             value={username}
             margin="dense"
+            autoComplete="off"
+            required
           />
         </FormControl>
-        <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
-          <InputLabel
-            sx={{ m: 1, width: "25ch" }}
-            htmlFor="outlined-adornment-password"
-          >
-            Password
-          </InputLabel>
-          <OutlinedInput
-            sx={{ m: 1, width: "25ch" }}
-            id="outlined-adornment-password"
-            margin="dense"
-            type={values.showPassword ? "text" : "password"}
-            value={values.password}
-            onChange={handleChange("password")}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
-          />
-        </FormControl>
+        <div className="username">
+          <FormControl sx={{ m: 1, ml: 1, width: "25ch" }} variant="outlined">
+            <InputLabel sx={{ m: 1 }} htmlFor="outlined-adornment-password">
+              Password
+            </InputLabel>
+            <OutlinedInput
+              fullWidth
+              sx={{ m: 1 }}
+              id="outlined-adornment-password"
+              margin="dense"
+              type={values.showPassword ? "text" : "password"}
+              value={values.password}
+              onChange={handleChange("password")}
+              required
+              autoComplete="off"
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              label="Password"
+            />
+          </FormControl>
+        </div>
         <br />
-        <button>Login</button>
+        <button className="button">Login</button>
       </form>
       {isError && (
         <div className="error">
-          <p>User does not exist.</p>
+          <p>Incorrect User/Password. Please try again.</p>
           <Link to="/register">Register instead.</Link>
         </div>
       )}
+    </div>
+  ) : (
+    <div className="login">
+      <h2>Welcome...</h2>
+      <Dashboard />
     </div>
   );
 };

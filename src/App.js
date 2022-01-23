@@ -17,9 +17,8 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="*" element={<Errorpage />} />
-            <Route path="/login" element={<Loginpage />} />
             <Route path="/dashboard/:username" element={<Dashboard />} />
-            <Route path="/" element={<Homepage />} />
+            <Route path="/" element={<Loginpage />} />
             <Route path="/reviews" element={<Homepage />} />
             <Route path="/categories" element={<Categories />} />
             <Route path="categories/:category_name" element={<Homepage />} />

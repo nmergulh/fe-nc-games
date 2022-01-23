@@ -28,7 +28,7 @@
     .users-link {
       display: flex;
       align-items: center;
-      @media (max-width: 414px) {
+      @media (max-width: 520px) {
         .user-word {
           display: none;
         }
@@ -36,12 +36,20 @@
     }
     .person-icon {
       margin: 5px;
+      width: 35px;
+      height: 35px;
+    }
+
+    .avatar {
+      margin: 5px;
+      width: 35px;
+      height: 35px;
     }
 
     .categories-link {
       display: flex;
       align-items: center;
-      @media (max-width: 414px) {
+      @media (max-width: 520px) {
         .categories-word {
           display: none;
         }
@@ -50,6 +58,8 @@
 
     .categories-icon {
       margin: 5px;
+      width: 35px;
+      height: 35px;
     }
   }
 
