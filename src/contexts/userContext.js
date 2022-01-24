@@ -23,6 +23,8 @@ export const UserProvider = ({ children }) => {
         setCurrentUser,
         allUsers,
         setAllUsers,
+        loggedIn,
+        setLoggedIn,
       }}
     >
       {children}

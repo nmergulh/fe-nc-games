@@ -9,18 +9,7 @@ const Dashboard = () => {
 
   const navigate = useNavigate();
 
-  const handleClick = (event) => {
-    setUsername("");
-    setCurrentUser({});
-    setLoggedIn(false);
-    navigate(`/`);
-  };
-
-  return (
-    <div className="dashboard">
-      <button onClick={handleClick}>Logout</button>
-    </div>
-  );
+  return <div className="dashboard"></div>;
 };
 
 export default Dashboard;

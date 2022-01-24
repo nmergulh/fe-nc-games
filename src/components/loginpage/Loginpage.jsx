@@ -3,7 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/userContext";
 import { getUserDetails } from "../../utils/api";
 import { useError } from "../../hooks/useError";
-import { FormControl, InputLabel, IconButton, TextField } from "@mui/material";
+import {
+  FormControl,
+  InputLabel,
+  IconButton,
+  TextField,
+  Button,
+} from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { InputAdornment, OutlinedInput } from "@mui/material";
 
@@ -12,7 +18,7 @@ import Dashboard from "../dashboard/Dashboard";
 
 const Loginpage = () => {
   const { isError, setIsError } = useError(false);
-  const { username, setUsername, setCurrentUser, setLoggedIn, loggedIn } =
+  const { username, setUsername, setCurrentUser, setLoggedIn } =
     useContext(UserContext);
   const [values, setValues] = useState({
     password: "",
@@ -57,7 +63,7 @@ const Loginpage = () => {
       });
   };
 
-  return loggedIn ? (
+  return (
     <div className="login">
       <h2>Login</h2>
       <form onSubmit={handleSignIn} className="form">
@@ -107,19 +113,15 @@ const Loginpage = () => {
           </FormControl>
         </div>
         <br />
-        <button className="button">Login</button>
+        <Button className="button" variant="contained" type="submit">
+          Log In
+        </Button>
       </form>
       {isError && (
         <div className="error">
-          <p>Incorrect User/Password. Please try again.</p>
-          <Link to="/register">Register instead.</Link>
+          <p>Invalid Username and/or Password</p>
         </div>
       )}
-    </div>
-  ) : (
-    <div className="login">
-      <h2>Welcome...</h2>
-      <Dashboard />
     </div>
   );
 };
