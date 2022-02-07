@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/userContext";
 import { getUserDetails } from "../../utils/api";
 import { useError } from "../../hooks/useError";
@@ -53,7 +53,7 @@ const Loginpage = () => {
       .then((user) => {
         if (values.password === "password") {
           setCurrentUser(user);
-          navigate(`/dashboard/${username}`);
+          navigate(`/reviews`);
           setLoggedIn(true);
         }
       })
