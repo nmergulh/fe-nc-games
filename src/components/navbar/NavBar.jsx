@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./navbar.scss";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {
@@ -17,8 +17,15 @@ import { UserContext } from "../../contexts/userContext";
 import { Logout } from "@mui/icons-material";
 
 const NavBar = () => {
-  const { username, setUsername, currentUser, loggedIn } =
-    useContext(UserContext);
+  const {
+    username,
+    setUsername,
+    currentUser,
+    loggedIn,
+    setCurrentUser,
+    setLoggedIn,
+  } = useContext(UserContext);
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -26,6 +33,13 @@ const NavBar = () => {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleSignOut = (event) => {
+    event.preventDefault();
+    navigate(`/`);
+    setCurrentUser("");
+    setLoggedIn(false);
   };
 
   return loggedIn ? (
@@ -114,11 +128,11 @@ const NavBar = () => {
             </Link>
           </MenuItem>
           <Divider />
-          <MenuItem>
+          <MenuItem onClick={handleSignOut}>
             <ListItemIcon>
               <Logout fontSize="small" />
             </ListItemIcon>
-            <Link to="/">Logout</Link>
+            Logout
           </MenuItem>
         </Menu>
       </div>

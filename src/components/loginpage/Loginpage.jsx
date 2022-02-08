@@ -14,7 +14,6 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { InputAdornment, OutlinedInput } from "@mui/material";
 
 import "./loginpage.scss";
-import Dashboard from "../dashboard/Dashboard";
 
 const Loginpage = () => {
   const { isError, setIsError } = useError(false);
