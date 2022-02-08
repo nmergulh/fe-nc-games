@@ -42,6 +42,11 @@ const NavBar = () => {
     setLoggedIn(false);
   };
 
+  const handleProfile = (event) => {
+    event.preventDefault();
+    navigate(`/dashboard/${username}`);
+  };
+
   return loggedIn ? (
     <div className="navbar">
       <div className="navbar-left">
@@ -122,10 +127,8 @@ const NavBar = () => {
           transformOrigin={{ horizontal: "right", vertical: "top" }}
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
-          <MenuItem>
-            <Link to={`/dashboard/${username}`}>
-              <Avatar /> Profile
-            </Link>
+          <MenuItem onClick={handleProfile}>
+            <Avatar /> Profile
           </MenuItem>
           <Divider />
           <MenuItem onClick={handleSignOut}>
@@ -140,7 +143,7 @@ const NavBar = () => {
   ) : (
     <div className="navbar">
       <div className="navbar-left">
-        <Link to="/reviews">
+        <Link to="/">
           <h4>NC House of Games 🎲</h4>
         </Link>
       </div>
