@@ -15,16 +15,11 @@ import {
 import CategoryIcon from "@mui/icons-material/Category";
 import { UserContext } from "../../contexts/userContext";
 import { Logout } from "@mui/icons-material";
+import { firstNameOnly } from "../../utils/nameSplitter";
 
 const NavBar = () => {
-  const {
-    username,
-    setUsername,
-    currentUser,
-    loggedIn,
-    setCurrentUser,
-    setLoggedIn,
-  } = useContext(UserContext);
+  const { username, currentUser, loggedIn, setCurrentUser, setLoggedIn } =
+    useContext(UserContext);
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -88,7 +83,7 @@ const NavBar = () => {
                 src={currentUser.avatar_url}
                 sx={{ width: 32, height: 32, mr: 1 }}
               />
-              <span>{currentUser.name}</span>
+              <span>{firstNameOnly(currentUser.name)}</span>
             </IconButton>
           </Tooltip>
         </Box>
