@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/userContext";
+import { useLoading } from "../../hooks/useLoading";
 import { getUserDetails } from "../../utils/api";
 import { useError } from "../../hooks/useError";
 import {
@@ -12,11 +13,13 @@ import {
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { InputAdornment, OutlinedInput } from "@mui/material";
+import { BackdropUnstyled, CircularProgress } from "@mui/material";
 
 import "./loginpage.scss";
 
 const Loginpage = () => {
   const { isError, setIsError } = useError(false);
+  const { loading, setIsLoading } = useLoading(false);
   const { username, setUsername, setCurrentUser, setLoggedIn } =
     useContext(UserContext);
   const [values, setValues] = useState({
@@ -47,13 +50,16 @@ const Loginpage = () => {
 
   const handleSignIn = (event) => {
     setIsError(false);
+    setIsLoading(false);
     event.preventDefault();
     getUserDetails(username)
       .then((user) => {
         if (values.password === "password") {
+          setIsLoading(true);
           setCurrentUser(user);
           navigate(`/reviews`);
           setLoggedIn(true);
+          setIsLoading(false);
         }
       })
       .catch((err) => {
@@ -120,6 +126,12 @@ const Loginpage = () => {
         <div className="error">
           <p>Invalid Username and/or Password</p>
         </div>
+      )}
+      {!loading && (
+        <BackdropUnstyled className="backdrop">
+          <CircularProgress color="inherit" className="circleprogress" />
+          <p>Loading...</p>
+        </BackdropUnstyled>
       )}
     </div>
   );
