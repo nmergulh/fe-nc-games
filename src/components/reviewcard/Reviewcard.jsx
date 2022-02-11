@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import "./reviewcard.scss";
 import { Link } from "react-router-dom";
 import Votes from "../votes/Votes";
@@ -8,7 +8,7 @@ import { truncateText } from "../../utils/truncateText";
 import { UserContext } from "../../contexts/userContext";
 
 const Reviewcard = ({ review }) => {
-  const { allUsers, setAllUsers } = useContext(UserContext);
+  const { allUsers } = useContext(UserContext);
 
   let avatarUrl = "";
   for (let i = 0; i < allUsers.length; i++) {

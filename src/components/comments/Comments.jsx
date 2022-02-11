@@ -15,12 +15,15 @@ const Comments = ({ review_id }) => {
   const { loading, setIsLoading } = useLoading();
 
   useEffect(() => {
-    getCommentsByReviewId(review_id).then((itemsFromApi) => {
-      setIsLoading(true);
-      setUserComments(itemsFromApi);
-      setIsLoading(false);
-      console.log(itemsFromApi);
-    });
+    getCommentsByReviewId(review_id)
+      .then((itemsFromApi) => {
+        setIsLoading(true);
+        setUserComments(itemsFromApi);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setIsLoading(false);
+      });
   }, [review_id, setIsLoading]);
 
   return loading ? (

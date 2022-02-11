@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./commentcard.scss";
 import Avatar from "@mui/material/Avatar";
 import { dateTranslater } from "../../utils/datetranslator";
+import { UserContext } from "../../contexts/userContext";
 
 const Commentcard = ({ comment }) => {
+  const { allUsers } = useContext(UserContext);
+
+  let avatarUrl = "";
+  for (let i = 0; i < allUsers.length; i++) {
+    if (allUsers[i].username === comment.author) {
+      avatarUrl = allUsers[i].avatar_url;
+    }
+  }
   return (
     <div className="single-commentcardwrap">
       <div className="comment-bar">
         <div className="name-picture">
-          <Avatar className="avatar">{comment.author}</Avatar>
+          <Avatar className="avatar" src={avatarUrl} />
           <h4>{comment.author}</h4>
         </div>
         <p>{dateTranslater(comment)}</p>
