@@ -55,3 +55,12 @@ export const getUsers = () => {
     return data.users;
   });
 };
+
+export const postComment = (review_id, username, body) => {
+  console.log(review_id, username, body);
+  return gamesAPI
+    .post(`/reviews/${review_id}/comments`, { author: username, body })
+    .then(({ data }) => {
+      return data.comment;
+    });
+};

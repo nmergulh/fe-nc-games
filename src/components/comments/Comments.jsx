@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Postcomment from "../postcomment/Postcomment";
 import "./comments.scss";
 import { getCommentsByReviewId } from "../../utils/api";
 import {
@@ -24,7 +25,7 @@ const Comments = ({ review_id }) => {
       .catch((err) => {
         setIsLoading(false);
       });
-  }, [review_id, setIsLoading]);
+  }, [review_id, setIsLoading, setUserComments]);
 
   return loading ? (
     <BackdropUnstyled className="backdrop">
@@ -32,16 +33,26 @@ const Comments = ({ review_id }) => {
       <p>Loading...</p>
     </BackdropUnstyled>
   ) : userComments.length > 1 ? (
-    <div className="reviewlist">
-      {userComments.map((comment) => {
-        return <Commentcard comment={comment} key={comment.comment_id} />;
-      })}
-    </div>
+    <>
+      <div className="reviewlist">
+        {userComments.map((comment) => {
+          return <Commentcard comment={comment} key={comment.comment_id} />;
+        })}
+      </div>
+      <Postcomment
+        userComments={userComments}
+        setUserComments={setUserComments}
+        review_id={review_id}
+      />
+    </>
   ) : (
-    <Alert className="no-comments-alert" severity="info">
-      <AlertTitle>No Comments</AlertTitle>
-      Post a Comment Below.
-    </Alert>
+    <>
+      <Alert className="no-comments-alert" severity="info">
+        <AlertTitle>No Comments</AlertTitle>
+        Post a Comment Below.
+      </Alert>
+      <Postcomment />
+    </>
   );
 };
 

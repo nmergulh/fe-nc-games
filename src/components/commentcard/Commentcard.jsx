@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./commentcard.scss";
 import Avatar from "@mui/material/Avatar";
 import { dateTranslater } from "../../utils/datetranslator";
 import { UserContext } from "../../contexts/userContext";
 
 const Commentcard = ({ comment }) => {
+  const [postComment, setPostComment] = useState({});
   const { allUsers } = useContext(UserContext);
 
   let avatarUrl = "";
@@ -13,6 +14,7 @@ const Commentcard = ({ comment }) => {
       avatarUrl = allUsers[i].avatar_url;
     }
   }
+
   return (
     <div className="single-commentcardwrap">
       <div className="comment-bar">

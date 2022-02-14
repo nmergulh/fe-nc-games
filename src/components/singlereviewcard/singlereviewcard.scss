@@ -49,6 +49,7 @@
       p {
         margin-left: 10px;
         margin-right: 10px;
+        margin-bottom: 0px;
       }
     }
 
@@ -62,19 +63,6 @@
     .comments-alert {
       margin-left: 10px;
       margin-right: 10px;
-    }
-
-    .post-comment {
-      margin-left: 10px;
-      margin-right: 10px;
-      .comment-textfield {
-        margin-bottom: 10px;
-      }
-    }
-
-    .post-button {
-      margin-left: 10px;
-      margin-bottom: 10px;
     }
   }
 }

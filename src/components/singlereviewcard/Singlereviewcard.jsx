@@ -46,29 +46,6 @@ const Singlereviewcard = ({ reviewdata }) => {
         <div className="comments-alert">
           <Comments review_id={reviewdata.review_id} reviewdata={reviewdata} />
         </div>
-        <div className="post-comment">
-          <TextField
-            id="outlined-basic"
-            label="Write a Comment..."
-            variant="outlined"
-            multiline
-            rows={4}
-            fullWidth
-            inputProps={{
-              style: { fontSize: 15 },
-            }}
-            className="comment-textfield"
-          />
-        </div>
-        <div className="post-button">
-          <Button
-            key="post-comment"
-            variant="contained"
-            endIcon={<PostAddIcon />}
-          >
-            Post Comment
-          </Button>
-        </div>
       </li>
     </div>
   );
