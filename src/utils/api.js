@@ -64,3 +64,9 @@ export const postComment = (review_id, username, body) => {
       return data.comment;
     });
 };
+
+export const deleteComment = (comment_id) => {
+  return gamesAPI.delete(`/comments/${comment_id}`).catch((err) => {
+    console.log(err);
+  });
+};

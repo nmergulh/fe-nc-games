@@ -1,9 +1,6 @@
 import React, { useContext } from "react";
-import { Button } from "@mui/material";
 import "./singlereviewcard.scss";
 import Comments from "../comments/Comments";
-import { TextField } from "@mui/material";
-import PostAddIcon from "@mui/icons-material/PostAdd";
 import Votes from "../votes/Votes";
 import Avatar from "@mui/material/Avatar";
 import { dateTranslater } from "../../utils/datetranslator";
@@ -11,7 +8,6 @@ import { UserContext } from "../../contexts/userContext";
 
 const Singlereviewcard = ({ reviewdata }) => {
   const { allUsers } = useContext(UserContext);
-
   let avatarUrl = "";
   for (let i = 0; i < allUsers.length; i++) {
     if (allUsers[i].username === reviewdata.owner) {

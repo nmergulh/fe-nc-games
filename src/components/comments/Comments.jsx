@@ -36,7 +36,14 @@ const Comments = ({ review_id }) => {
     <>
       <div className="reviewlist">
         {userComments.map((comment) => {
-          return <Commentcard comment={comment} key={comment.comment_id} />;
+          return (
+            <Commentcard
+              comment={comment}
+              key={comment.comment_id}
+              userComments={userComments}
+              setUserComments={setUserComments}
+            />
+          );
         })}
       </div>
       <Postcomment

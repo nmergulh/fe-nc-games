@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "./commentcard.scss";
 import Avatar from "@mui/material/Avatar";
 import { dateTranslater } from "../../utils/datetranslator";
 import { UserContext } from "../../contexts/userContext";
+import Deletecomment from "../deletecomment/Deletecomment";
 
-const Commentcard = ({ comment }) => {
-  const [postComment, setPostComment] = useState({});
-  const { allUsers } = useContext(UserContext);
+const Commentcard = ({ comment, userComments, setUserComments }) => {
+  const { allUsers, currentUser } = useContext(UserContext);
 
   let avatarUrl = "";
   for (let i = 0; i < allUsers.length; i++) {
@@ -30,6 +30,13 @@ const Commentcard = ({ comment }) => {
           <p>{comment.body}</p>
         </div>
       </div>
+      {currentUser.username === comment.author && (
+        <Deletecomment
+          comment={comment}
+          userComments={userComments}
+          setUserComments={setUserComments}
+        />
+      )}
     </div>
   );
 };
